@@ -1,0 +1,18 @@
+Metadata-Version: 1.1
+Name: eval7
+Version: 0.1.2
+Summary: A poker hand evaluation and equity calculation library
+Home-page: https://github.com/JulianAndrews/pyeval7
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: MIT
+Description: UNKNOWN
+Keywords: poker equity library
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Cython
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Games/Entertainment
