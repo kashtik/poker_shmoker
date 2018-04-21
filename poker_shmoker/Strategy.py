@@ -2,8 +2,8 @@ import numpy
 import eval7
 import math
 import random
-from GTOSolver import GtoSolver
-from GameEngine import Game
+from poker_shmoker.GTOSolver import GtoSolver
+from poker_shmoker.GameEngine import Game
 
 
 class Strategy:

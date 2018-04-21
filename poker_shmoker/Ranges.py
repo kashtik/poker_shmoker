@@ -1,6 +1,6 @@
 import numpy
 import eval7
-from ShmokerCache import *
+from poker_shmoker.ShmokerCache import *
 import itertools
 import os
 

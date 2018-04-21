@@ -1,7 +1,6 @@
 import memcache
 import hashlib
 import random
-import time
 
 
 class ShmokerCache:

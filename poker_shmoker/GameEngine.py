@@ -1,6 +1,5 @@
-import numpy
 import eval7
-from Ranges import Ranges
+from poker_shmoker.Ranges import Ranges
 
 
 class Game:
