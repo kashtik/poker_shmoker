@@ -1,7 +1,5 @@
 from distutils.core import setup
 
-print("setting up")
-
 setup(name='poker_shmoker',
       version='1.0',
       description='Poker Bot',
