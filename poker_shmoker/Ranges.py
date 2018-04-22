@@ -8,9 +8,14 @@ hs_cache = ShmokerCache(calc_rate=0.05, client_ip="127.0.0.1", refresh_type="ave
 
 
 def load_all_hands():
-    array_path = os.path.dirname(os.path.abspath(__file__)) + "/array_storage"
-    all_possible_hands = [[eval7.Card(each[0]), eval7.Card(each[1])] for each in
+    try:
+        array_path = os.path.dirname(os.path.abspath(__file__)) + "/array_storage"
+        all_possible_hands = [[eval7.Card(each[0]), eval7.Card(each[1])] for each in
                           numpy.load(array_path + "/sorted_starting_hands.npy")]
+    except:
+        array_path = os.path.dirname(os.path.abspath(__file__)) + "/../array_storage"
+        all_possible_hands = [[eval7.Card(each[0]), eval7.Card(each[1])] for each in
+                              numpy.load(array_path + "/sorted_starting_hands.npy")]
     return [[each, 1] for each in all_possible_hands]
 
 

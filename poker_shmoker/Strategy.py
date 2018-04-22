@@ -17,7 +17,7 @@ class Strategy:
         last_action_player_id = len(game_state.game_state_history)
 
         hero_id = ((game_state.players[last_action_player_id:] +
-                    game_state.players[:last_action_player_id])[1:].index(1)+1) % len(game_state.players)
+                    game_state.players[:last_action_player_id])[1:].index(1)) % len(game_state.players)
         maximum_bet = max(game_state.player_bets)
         hand_position = self.get_hand_position(game_state, player_id=hero_id)
         position_coefficient = self.get_position_coefficient(game_state, player_id=hero_id)

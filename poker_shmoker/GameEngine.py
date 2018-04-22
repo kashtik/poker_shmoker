@@ -67,7 +67,7 @@ class Game:
                 print(action)
                 player, player_name, move, bet_size = tuple(action)
 
-                if move == "folds":
+                if "fold" in move:
                     self.players[player] = 0
                     self.adjusted[i + 4] = True
                     continue

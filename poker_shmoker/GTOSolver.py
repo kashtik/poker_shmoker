@@ -166,5 +166,8 @@ if __name__ == "__main__":
     cob = GS.check_or_bet(50, 100, cr=True, position_coef=1)
     GS.visualize(cob)
 
+    cob = GS.check_or_bet(50, 100, cr=True, position_coef=0)
+    GS.visualize(cob)
+
     cor = GS.call_or_raise(10, 50, 100)
     GS.visualize(cor, 30)
