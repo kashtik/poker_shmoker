@@ -24,9 +24,11 @@ class Strategy:
         pot = game_state.pot
         board = game_state.board
 
-        players = game_state.players[hero_id:] + game_state.player_ranges[:hero_id]
+        players = game_state.players[hero_id:] + game_state.players[:hero_id]
         ranges = game_state.player_ranges[hero_id:] + game_state.player_ranges[:hero_id]
         player_bets = game_state.player_bets[hero_id:] + game_state.player_bets[:hero_id]
+
+        print(players);
 
         ranges = [value for key, value in enumerate(ranges) if players[key] != 0]
         player_bets = [value for key, value in enumerate(player_bets) if players[key] != 0]
@@ -125,9 +127,12 @@ class Strategy:
         maximum_bet = max(game_state.player_bets)
         board = list(game_state.board)
         position_coefficient = self.get_position_coefficient(game_state)
+
         players = game_state.players[player_id:] + game_state.players[:player_id]
         ranges = game_state.player_ranges[player_id:] + game_state.player_ranges[:player_id]
         player_bets = game_state.player_bets[player_id:] + game_state.player_bets[:player_id]
+
+        print("players:", players)
 
         ranges = [value for key, value in enumerate(ranges) if players[key] != 0]
         player_bets = [value for key, value in enumerate(player_bets) if players[key] != 0]
@@ -284,7 +289,8 @@ if __name__ == "__main__":
     hero_hand = ["Ah", "As"]
     print("Hero hand:", hero_hand)
     board = ['Jh', '5s', 'Ts']
-    game_state_history =    [
+    """
+     game_state_history =    [
 
                             ["Button_pos", 8],
                             [1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -308,6 +314,14 @@ if __name__ == "__main__":
                             #[0, "plauer1", "calls", 600],
                             #[1, "plauyer", "calls", 600]
             ]
+    """
+    game_state_history = [
+        ["button_pos", 4],
+        [1,0,0,0,1,0,0,0,0],
+        [4, "player", "bets", 10],
+        [0, "player", "bet", 20]
+    ]
+
 
     game = Game(game_state_history)
     strat = Strategy()
