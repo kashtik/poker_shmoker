@@ -125,9 +125,6 @@ class Strategy:
         maximum_bet = max(game_state.player_bets)
         board = list(game_state.board)
         position_coefficient = self.get_position_coefficient(game_state)
-
-        print("Position coefficient", position_coefficient)
-
         players = game_state.players[player_id:] + game_state.players[:player_id]
         ranges = game_state.player_ranges[player_id:] + game_state.player_ranges[:player_id]
         player_bets = game_state.player_bets[player_id:] + game_state.player_bets[:player_id]
@@ -135,10 +132,7 @@ class Strategy:
         ranges = [value for key, value in enumerate(ranges) if players[key] != 0]
         player_bets = [value for key, value in enumerate(player_bets) if players[key] != 0]
 
-        print("adjust_range: ", action, player_id)
         range_length = len(game_state.player_ranges[player_id])
-        print("player bets:", player_bets)
-        print("previous pot", pot)
         # -- Preflop handling
         if pot == 0:
             if bet > maximum_bet:
@@ -146,7 +140,6 @@ class Strategy:
                 raise_value_range = self.eval7_wrapper_opt_range(pot, bet, ranges, player_bets, board)
 
                 game_state.player_ranges[player_id] = game_state.player_ranges[player_id][:int(raise_value_range)]
-                print("preflop raise: Range changed from", range_length, "->", len(game_state.player_ranges[player_id]))
                 return
 
             if bet == maximum_bet:
@@ -154,7 +147,6 @@ class Strategy:
                 call_value_range = self.eval7_wrapper_opt_range(pot, maximum_bet, ranges, player_bets, board)
 
                 game_state.player_ranges[player_id] = game_state.player_ranges[player_id][:int(call_value_range)]
-                print("preflop call: Range changed from", range_length, "->", len(game_state.player_ranges[player_id]))
                 return
 
 
@@ -173,8 +165,7 @@ class Strategy:
             game_state.player_ranges[player_id] = [ game_state.player_ranges[player_id][i] for i, val in enumerate(action_array) if
                                                     val == "CHECK" ]
 
-            print("check: Range changed from", range_length, "->", len(game_state.player_ranges[player_id]))
-            gs.visualize(action_array)
+            # gs.visualize(action_array)
             return
 
         # Bet
@@ -189,8 +180,7 @@ class Strategy:
 
             game_state.player_ranges[player_id] = [ game_state.player_ranges[player_id][i] for i, val in enumerate(action_array) if
                                               val == "BET" ]
-            print("bet: Range changed from", range_length, "->", len(game_state.player_ranges[player_id]))
-            gs.visualize(action_array)
+            # gs.visualize(action_array)
             return
 
         # Call
@@ -207,8 +197,7 @@ class Strategy:
 
             game_state.player_ranges[player_id] = [ game_state.player_ranges[player_id][i] for i, val in enumerate(action_array) if
                                               val == "CALL" ]
-            print("call: Range changed from", range_length, "->", len(game_state.player_ranges[player_id]))
-            gs.visualize(action_array)
+            # gs.visualize(action_array)
             return
 
         # Raise
@@ -225,8 +214,7 @@ class Strategy:
 
             game_state.player_ranges[player_id] = [game_state.player_ranges[player_id][i] for i, val in enumerate(action_array) if
                                              val == "RAISE"]
-            print("raise: Range changed from", range_length, "->", len(game_state.player_ranges[player_id]))
-            gs.visualize(action_array)
+            # gs.visualize(action_array)
             return
 
         raise Exception("Adjust range act", action, "falls into no categories")
@@ -277,7 +265,7 @@ class Strategy:
         """
 
         rngs = list(rngs)
-        print(pp, cmb, numpy.array(rngs).shape, pb, brd)
+        print(pp, cmb, [len(each) for each in rngs], pb, brd)
         res = eval7.py_optimal_ranges_calculator(pp, cmb, rngs, pb, brd, 0, self.NUM_PARAM_I, self.NUM_PARAM_II)
 
         numpy_res = numpy.array(res)
