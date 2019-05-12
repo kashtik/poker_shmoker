@@ -1,5 +1,5 @@
 # poker_shmoker
-My Own Poker Bot/Engine to Play Around With
+My Own Poker Bot to Play Around With
 
 basically poker_shmoker folder is all my stuff. 
 
